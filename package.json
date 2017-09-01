@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha index.spec.js"
+    "test": "mocha index.spec.js",
+    "tslint": "tslint",
+    "lint": "npm run tslint \"src/**/*.ts\""
   },
   "author": "",
   "license": "ISC",
@@ -12,7 +14,25 @@
     "express": "^4.15.4"
   },
   "devDependencies": {
+    "@types/express": "^4.0.37",
+    "awesome-typescript-loader": "^3.2.3",
+    "codelyzer": "^3.1.2",
+    "istanbul-instrumenter-loader": "^3.0.0",
+    "json-loader": "^0.5.7",
+    "karma": "^1.7.1",
+    "karma-coverage": "^1.1.1",
+    "karma-jasmine": "^1.1.0",
+    "karma-mocha-reporter": "^2.2.4",
+    "karma-remap-coverage": "^0.1.4",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-webpack": "^2.0.4",
     "mocha": "^3.5.0",
-    "supertest": "^3.0.0"
+    "raw-loader": "^0.5.1",
+    "source-map-loader": "^0.2.1",
+    "supertest": "^3.0.0",
+    "to-string-loader": "^1.1.5",
+    "tslint": "^5.7.0",
+    "typescript": "^2.5.2",
+    "webpack": "^3.5.5"
   }
 }
