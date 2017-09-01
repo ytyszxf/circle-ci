@@ -1,10 +1,20 @@
 module.exports = function(config) {
-  var testWebpackConfig = require('./webpack.test.js')({env: 'test'});
+  var testWebpackConfig = require('./webpack.test.js');
 
   var configuration = {
 
     // base path that will be used to resolve all patterns (e.g. files, exclude)
     basePath: '',
+
+    plugins: [
+      'karma-chrome-launcher',
+      'karma-jasmine',
+      'karma-mocha-reporter',
+      'karma-coverage',
+      'karma-remap-coverage',
+      'karma-webpack',
+      'karma-sourcemap-loader'
+    ],
 
     /*
      * Frameworks to use
@@ -21,13 +31,13 @@ module.exports = function(config) {
      *
      * we are building the test environment in ./spec-bundle.js
      */
-    files: [ { pattern: './config/spec-bundle.js', watched: false } ],
+    files: [ { pattern: './spec-bundle.js', watched: false } ],
 
     /*
      * preprocess matching files before serving them to the browser
      * available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
      */
-    preprocessors: { './config/spec-bundle.js': ['coverage', 'webpack', 'sourcemap'] },
+    preprocessors: { './spec-bundle.js': ['coverage', 'webpack', 'sourcemap'] },
 
     // Webpack Config at ./webpack.test.js
     webpack: testWebpackConfig,

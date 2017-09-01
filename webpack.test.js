@@ -1,4 +1,13 @@
+/**
+ * Webpack Plugins
+ */
+const webpack = require('webpack');
+const DefinePlugin = require('webpack/lib/DefinePlugin');
+const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
+const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
 const path = require('path');
+
+const ENV = 'test';
 
 module.exports = {
   devtool: 'inline-source-map',
@@ -117,7 +126,7 @@ module.exports = {
      * See: https://webpack.github.io/docs/list-of-plugins.html#defineplugin
      */
     // NOTE: when adding more properties make sure you include them in custom-typings.d.ts
-    new DefinePlugin({
+    new webpack.DefinePlugin({
       'ENV': JSON.stringify(ENV),
       'HMR': false,
       'process.env': {
@@ -134,7 +143,7 @@ module.exports = {
      * See: https://webpack.github.io/docs/list-of-plugins.html#contextreplacementplugin
      * See: https://github.com/angular/angular/issues/11580
      */
-    new ContextReplacementPlugin(
+    new webpack.ContextReplacementPlugin(
       // The (\\|\/) piece accounts for path separators in *nix and Windows
       /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
       path.resolve(__dirname,'src') // location of your src
@@ -145,7 +154,7 @@ module.exports = {
     *
     * See: https://gist.github.com/sokra/27b24881210b56bbaff7
     */
-    new LoaderOptionsPlugin({
+    new webpack.LoaderOptionsPlugin({
       debug: true,
       options: {
     
